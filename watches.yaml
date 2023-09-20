@@ -1,0 +1,6 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: charolia.io
+  version: v1alpha1
+  kind: BookStore
+  chart: helm-charts/bookstore
+#+kubebuilder:scaffold:watch

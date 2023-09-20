@@ -1,0 +1,27 @@
+# permissions for end users to view bookstores.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: bookstore-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: bookstore-operator
+    app.kubernetes.io/part-of: bookstore-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: bookstore-viewer-role
+rules:
+- apiGroups:
+  - charolia.io
+  resources:
+  - bookstores
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - charolia.io
+  resources:
+  - bookstores/status
+  verbs:
+  - get

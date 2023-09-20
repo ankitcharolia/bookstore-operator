@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  labels:
+    app: {{ include "book-store.name" . }}-mongodb
+    chart: {{ include "book-store.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.mongodb.type }}
+  ports:
+  - port: {{ .Values.service.mongodb.port }}
+    targetPort:  {{ .Values.service.mongodb.targetPort }}
+    protocol: TCP
+    name: mongodbport
+  selector:
+    app: {{ include "book-store.name" . }}-mongodb

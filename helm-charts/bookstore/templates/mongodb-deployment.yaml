@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "book-store.fullname" . }}-mongodb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ include "book-store.name" . }}-mongodb
+        chart: {{ include "book-store.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      containers:
+      - name: mongodb
+        image: {{ .Values.image.mongodb.repository }}:{{ .Values.image.mongodb.tag}}
+        imagePullPolicy: {{ .Values.image.mongodb.pullPolicy }}
+        ports:
+        - name: mongodbport
+          containerPort: 27017
+          protocol: TCP

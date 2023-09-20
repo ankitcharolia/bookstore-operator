@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ include "book-store.fullname" . }}
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ include "book-store.name" . }}
+        chart: {{ include "book-store.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      containers:
+      - name: bookstore
+        image: {{ .Values.image.app.repository }}:{{ .Values.image.app.tag }}
+        imagePullPolicy: {{ .Values.image.app.pullPolicy }}
+        ports:
+        - containerPort: 3000

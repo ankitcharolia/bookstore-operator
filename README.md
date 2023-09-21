@@ -86,5 +86,12 @@ kubectl delete -f config/samples/bookstore_v1alpha1.yaml
 make undeploy
 ```
 
+### Option-3
+```bash
+# Run locally outside the cluster
+make install run
+kubectl apply -f deploy/manifests/bookstore-cr.yaml
+```
+
 ### Reference
 [How-To Example](https://help.ovhcloud.com/csm/en-public-cloud-kubernetes-deploy-helm-operator?id=kb_article_view&sysparm_article=KB0049804#customresources)

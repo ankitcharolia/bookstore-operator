@@ -15,7 +15,7 @@ spec:
       serviceAccountName: bookstore-operator
       containers:
         - name: bookstore-operator
-          image: ankitcharolia/bookstore-operator:0.0.1
+          image: ankitcharolia/bookstore-operator:0.0.2
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -37,7 +37,7 @@ metadata:
 
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
+kind: ClusterRole
 metadata:
   name: bookstore-operator
 rules:
@@ -108,14 +108,15 @@ rules:
 
 
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: bookstore-operator
 subjects:
 - kind: ServiceAccount
   name: bookstore-operator
+  namespace: default
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: bookstore-operator
   apiGroup: rbac.authorization.k8s.io

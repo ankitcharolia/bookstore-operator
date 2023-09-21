@@ -3,8 +3,8 @@ kind: Service
 metadata:
   name: mongodb-service
   labels:
-    app: {{ include "book-store.name" . }}-mongodb
-    chart: {{ include "book-store.chart" . }}
+    app: {{ include "bookstore.name" . }}-mongodb
+    chart: {{ include "bookstore.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -15,4 +15,4 @@ spec:
     protocol: TCP
     name: mongodbport
   selector:
-    app: {{ include "book-store.name" . }}-mongodb
+    app: {{ include "bookstore.name" . }}-mongodb

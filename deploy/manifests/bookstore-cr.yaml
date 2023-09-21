@@ -3,8 +3,12 @@ kind: BookStore
 metadata:
   name: bookstore-example
 spec:
-  # Default values copied from <project_dir>/helm-charts/book-store/values.yaml
+  # Default values copied from <project_dir>/helm-charts/bookstore/values.yaml
   replicaCount: 1
+  selector:
+    matchLabels:
+      app: bookstore
+      release: bookstore-example
   image:
     app:
       repository: ankitcharolia/pyapp

@@ -1,14 +1,18 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "book-store.fullname" . }}
+  name: {{ include "bookstore.fullname" . }}
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "bookstore.name" . }} 
+      release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ include "book-store.name" . }}
-        chart: {{ include "book-store.chart" . }}
+        app: {{ include "bookstore.name" . }}
+        chart: {{ include "bookstore.chart" . }}
         release: {{ .Release.Name }}
         heritage: {{ .Release.Service }}
     spec:

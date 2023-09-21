@@ -85,3 +85,6 @@ kubectl delete -f config/samples/bookstore_v1alpha1.yaml
 ```bash
 make undeploy
 ```
+
+### Reference
+[How-To Example](https://help.ovhcloud.com/csm/en-public-cloud-kubernetes-deploy-helm-operator?id=kb_article_view&sysparm_article=KB0049804#customresources)
